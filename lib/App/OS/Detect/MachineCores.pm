@@ -10,7 +10,6 @@ use strict;
 use warnings;
 
 use Moo;
-use MooX::Options skip_options => [qw<os cores>];
 
 has os => (
     is       => 'ro',
@@ -25,11 +24,9 @@ has cores => (
     builder => '_build_cores',
 );
 
-option add_one => (
+has add_one => (
     is      => 'rw',
-    isa     => sub { die "Invalid bool!" unless $_[0] == 0 or $_[0] == 1 },
     default => sub { '0' },
-    short   => 'i',
     doc     => q{add one to the number of cores (useful in scripts)},
 );
 
